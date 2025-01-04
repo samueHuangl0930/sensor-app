@@ -1,0 +1,50 @@
+#root {
+  width: 100vw;
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.content {
+  z-index: 5;
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  margin-right: 25px;
+}
+
+.chart {
+  height: 540px;
+  overflow-y: scroll;
+}
+
+.chart::-webkit-scrollbar {
+  display: none;
+  /* 適用於 Chrome、Edge 和 Safari */
+}
+
+th {
+  background-color: #77f0fdb9;
+}
+
+tr {
+  background-color:#3cd3e3b9;
+}
+
+table {
+  border-collapse: collapse;
+  width: 60%;
+  margin: 15px auto;
+  color: rgb(255, 255, 255);
+}
+
+table,
+th,
+td {
+  border: 2px solid #71d2ddcb;
+  text-align: center;
+}
