@@ -27,9 +27,9 @@ body {
 }
 
 .flowers {
-  position: relative;
+  position: absolute;
+  bottom: 0;
   left: 400px;
-  top: 370px;
   /* transform: scale(0.9); */
 }
 

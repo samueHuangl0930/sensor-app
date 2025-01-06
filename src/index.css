@@ -7,10 +7,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  position: relative;
 }
 
 .content {
-  z-index: 5;
+  z-index: 100;
   width: 54%;
   height: 100%;
   margin: auto;
@@ -32,7 +33,7 @@ th {
 }
 
 tr {
-  background-color:#3cd3e3b9;
+  background-color: #3cd3e3b9;
 }
 
 table {
@@ -47,4 +48,14 @@ th,
 td {
   border: 2px solid #71d2ddcb;
   text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .content {
+    z-index: 100;
+    width: 95%;
+    height: 100%;
+    margin: auto;
+    margin-right: 25px;
+  }
 }
