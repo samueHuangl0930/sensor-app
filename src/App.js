@@ -85,19 +85,22 @@ const App = () => {
           const humidities = [];
           const lights = [];
           const dates = [];
+          const fullDates = [];
 
           response.forEach((item) => {
             const date = moment(item.created_at).format("YYYY-MM-DD");
+            const fullDate = moment(item.created_at).format("YYYY-MM-DD HH:mm:ss");
             dates.push(date);
+            fullDates.push(fullDate);
             temperatures.push(item.temperature);
             humidities.push(item.humidity);
             lights.push(item.light);
           });
 
           setChartData({
-            temperature: { dates, values: temperatures },
-            humidity: { dates, values: humidities },
-            light: { dates, values: lights },
+            temperature: { dates, fullDates, values: temperatures },
+            humidity: { dates, fullDates, values: humidities },
+            light: { dates, fullDates, values: lights },
           });
         } else {
           message.error("資料加載失敗！");
@@ -138,8 +141,11 @@ const App = () => {
     tooltip: {
       trigger: "axis",
       formatter: function (params) {
-        const data = params[0];
-        return `${data.axisValue}<br/>温度: ${data.data} °C`;
+        const dataIndex = params[0].dataIndex;
+        const fullDate = chartData.temperature.fullDates[dataIndex];
+        const temperature = params[0].data;
+    
+        return `${fullDate}<br/>温度: ${temperature} °C`;
       },
     },
     series: [
@@ -184,8 +190,11 @@ const App = () => {
     tooltip: {
       trigger: "axis",
       formatter: function (params) {
-        const data = params[0];
-        return `${data.axisValue}<br/>濕度: ${data.data} %`;
+        const dataIndex = params[0].dataIndex;
+        const fullDate = chartData.humidity.fullDates[dataIndex];
+        const hum = params[0].data;
+    
+        return `${fullDate}<br/>濕度: ${hum} °C`;
       },
     },
     series: [
@@ -230,8 +239,11 @@ const App = () => {
     tooltip: {
       trigger: "axis",
       formatter: function (params) {
-        const data = params[0];
-        return `${data.axisValue}<br/>光照: ${data.data} cd/m²`;
+        const dataIndex = params[0].dataIndex;
+        const fullDate = chartData.light.fullDates[dataIndex];
+        const light = params[0].data;
+    
+        return `${fullDate}<br/>光照: ${light} cd/m²`;
       },
     },
     series: [
